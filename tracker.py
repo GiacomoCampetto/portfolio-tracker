@@ -707,7 +707,7 @@ with t_quant:
     with cq2: anni_b = st.selectbox("Anni Backtest:", [1, 3, 5, 10], index=2)
     with cq3: b_tk = st.selectbox("Benchmark:", ["SWDA.MI", "SPY", "QQQ", "URTH"], index=0)
 
-    sq = data_inizio_str if "Reale" in mod_a else (datetime.date.today() - datetime.timedelta(days=int(anni_b*365.25))).strftime("%Y-%m-%d")
+    sq = str(curr_data.get("data_inizio", "2024-01-02")) if "Reale" in mod_a else (datetime.date.today() - datetime.timedelta(days=int(anni_b*365.25))).strftime("%Y-%m-%d")
     dh = fetch_historical_matrix(tickers+[b_tk], start_date=sq)
 
     if not dh.empty:
